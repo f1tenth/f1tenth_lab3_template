@@ -1,1 +1,1 @@
-# f1tenth_lab2_template
+# Lab 2: Automatic Emergency Braking
