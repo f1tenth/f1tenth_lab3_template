@@ -15,8 +15,6 @@ The general equation for a PID controller in the time domain, as discussed in le
 
 ![](https://latex.codecogs.com/svg.latex?u(t)=K_{p}e(t)+K_{i}\int_{0}^{t}e(t^{\prime})dt^{\prime}+K_{d}\frac{d}{dt}(e(t)) )
 
-
-
 Here, ![](https://latex.codecogs.com/svg.latex?K_p), ![](https://latex.codecogs.com/svg.latex?K_i), and ![](https://latex.codecogs.com/svg.latex?K_d) are constants that determine how much weight each of the three components (proportional, integral, derivative) contribute to the control output ![](https://latex.codecogs.com/svg.latex?u(t)). ![](https://latex.codecogs.com/svg.latex?u(t)) in our case is the steering angle we want the car to drive at. The error term ![](https://latex.codecogs.com/svg.latex?e(t)) is the difference between the set point and the parameter we want to maintain around that set point.
 
 ## III. Wall Following
@@ -26,7 +24,7 @@ In the context of our car, the desired distance to the wall should be our set po
 ![fig1](imgs/wall_following_lab_figure_1.png)
 Figure 1: Distance and orientation of the car relative to the wall
 
-Using the two distances ![](https://latex.codecogs.com/svg.latex?a) and ![](https://latex.codecogs.com/svg.latex?b) from the laser scan, the angle https://latex.codecogs.com/svg.latex?\theta) between the laser scans, and some trigonometry, we can express https://latex.codecogs.com/svg.latex?\alpha) as
+Using the two distances ![](https://latex.codecogs.com/svg.latex?a) and ![](https://latex.codecogs.com/svg.latex?b) from the laser scan, the angle ![]https://latex.codecogs.com/svg.latex?\theta) between the laser scans, and some trigonometry, we can express ![]https://latex.codecogs.com/svg.latex?\alpha) as
 
 ![](https://latex.codecogs.com/svg.latex?\alpha=\mbox{tan}^{-1}\left(\frac{a\mbox{cos}(\theta)-b}{a\mbox{sin}(\theta)}\right))
 
@@ -36,7 +34,7 @@ We can then express ![](https://latex.codecogs.com/svg.latex?D_t) as
 
 to get the current distance between the car and the right wall. What's our error term ![](https://latex.codecogs.com/svg.latex?e(t)), then? It's simply the difference between the desired distance and actual distance! For example, if our desired distance is 1 meter from the wall, then ![](https://latex.codecogs.com/svg.latex?e(t)) becomes ![](https://latex.codecogs.com/svg.latex?1-D_t).
 	
-However, we have a problem on our hands. Remember that this is a race: your car will be traveling at a high speed and therefore will have a non-instantaneous response to whatever speed and servo control you give to it. If we simply use the current distance to the wall, we might end up turning too late, and the car may crash. Therefore, we must look to the future and project the car ahead by a certain lookahead distance (let's call it $L$). Our new distance ![](https://latex.codecogs.com/svg.latex?D_{t+1}) will then be
+However, we have a problem on our hands. Remember that this is a race: your car will be traveling at a high speed and therefore will have a non-instantaneous response to whatever speed and servo control you give to it. If we simply use the current distance to the wall, we might end up turning too late, and the car may crash. Therefore, we must look to the future and project the car ahead by a certain lookahead distance (let's call it ![](https://latex.codecogs.com/svg.latex?L)). Our new distance ![](https://latex.codecogs.com/svg.latex?D_{t+1}) will then be
 
 ![](https://latex.codecogs.com/svg.latex?D_{t+1}=D_t+L\mbox{sin}(\alpha))
 
