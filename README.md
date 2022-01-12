@@ -17,7 +17,7 @@ The general equation for a PID controller in the time domain, as discussed in le
 
 
 
-Here, ![](https://latex.codecogs.com/svg.latex?u(t)=K_p), ![](https://latex.codecogs.com/svg.latex?u(t)=K_i), and ![](https://latex.codecogs.com/svg.latex?u(t)=K_d) are constants that determine how much weight each of the three components (proportional, integral, derivative) contribute to the control output $u(t)$. ![](https://latex.codecogs.com/svg.latex?u(t)=u(t)) in our case is the steering angle we want the car to drive at. The error term ![](https://latex.codecogs.com/svg.latex?u(t)=e(t)) is the difference between the set point and the parameter we want to maintain around that set point.
+Here, ![](https://latex.codecogs.com/svg.latex?K_p), ![](https://latex.codecogs.com/svg.latex?K_i), and ![](https://latex.codecogs.com/svg.latex?K_d) are constants that determine how much weight each of the three components (proportional, integral, derivative) contribute to the control output $u(t)$. ![](https://latex.codecogs.com/svg.latex?u(t)) in our case is the steering angle we want the car to drive at. The error term ![](https://latex.codecogs.com/svg.latex?e(t)) is the difference between the set point and the parameter we want to maintain around that set point.
 
 ## III. Wall Following
 
