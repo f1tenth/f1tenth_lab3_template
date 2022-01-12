@@ -24,7 +24,7 @@ In the context of our car, the desired distance to the wall should be our set po
 ![fig1](imgs/wall_following_lab_figure_1.png)
 Figure 1: Distance and orientation of the car relative to the wall
 
-Using the two distances ![](https://latex.codecogs.com/svg.latex?a) and ![](https://latex.codecogs.com/svg.latex?b) from the laser scan, the angle ![]https://latex.codecogs.com/svg.latex?\theta) between the laser scans, and some trigonometry, we can express ![]https://latex.codecogs.com/svg.latex?\alpha) as
+Using the two distances ![](https://latex.codecogs.com/svg.latex?a) and ![](https://latex.codecogs.com/svg.latex?b) from the laser scan, the angle ![](https://latex.codecogs.com/svg.latex?\theta) between the laser scans, and some trigonometry, we can express ![](https://latex.codecogs.com/svg.latex?\alpha) as
 
 ![](https://latex.codecogs.com/svg.latex?\alpha=\mbox{tan}^{-1}\left(\frac{a\mbox{cos}(\theta)-b}{a\mbox{sin}(\theta)}\right))
 
