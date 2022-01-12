@@ -26,15 +26,15 @@ In the context of our car, the desired distance to the wall should be our set po
 ![fig1](imgs/wall_following_lab_figure_1.png)
 Figure 1: Distance and orientation of the car relative to the wall
 
-Using the two distances $a$ and $b$ from the laser scan, the angle $\theta$ between the laser scans, and some trigonometry, we can express $\alpha$ as
+Using the two distances ![](https://latex.codecogs.com/svg.latex?a) and ![](https://latex.codecogs.com/svg.latex?b) from the laser scan, the angle $\theta$ between the laser scans, and some trigonometry, we can express $\alpha$ as
 
-\alpha = \mbox{tan}^{-1}\left(\frac{a \; \mbox{cos}(\theta) - b}{a \; \mbox{sin}(\theta)}\right)
+![](https://latex.codecogs.com/svg.latex?\alpha=\mbox{tan}^{-1}\left(\frac{a\mbox{cos}(\theta)-b}{a\mbox{sin}(\theta)}\right))
 
-We can then express $D_t$ as 
+We can then express ![](https://latex.codecogs.com/svg.latex?D_t) as 
 
-D_t = b \; \mbox{cos}(\alpha)
+![](https://latex.codecogs.com/svg.latex?D_t=b\mbox{cos}(\alpha))
 
-to get the current distance between the car and the right wall. What's our error term $e(t)$, then? It's simply the difference between the desired distance and actual distance! For example, if our desired distance is 1 meter from the wall, then $e(t)$ becomes $1 - D_t$.
+to get the current distance between the car and the right wall. What's our error term ![](https://latex.codecogs.com/svg.latex?e(t)), then? It's simply the difference between the desired distance and actual distance! For example, if our desired distance is 1 meter from the wall, then ![](https://latex.codecogs.com/svg.latex?e(t)) becomes ![](https://latex.codecogs.com/svg.latex?1-D_t).
 	
 However, we have a problem on our hands. Remember that this is a race: your car will be traveling at a high speed and therefore will have a non-instantaneous response to whatever speed and servo control you give to it. If we simply use the current distance to the wall, we might end up turning too late, and the car may crash. Therefore, we must look to the future and project the car ahead by a certain lookahead distance (let's call it $L$). Our new distance $D_{t+1}$ will then be
 
