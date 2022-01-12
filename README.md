@@ -13,7 +13,7 @@ A PID controller is a way to maintain certain parameters of a system around a sp
 
 The general equation for a PID controller in the time domain, as discussed in lecture, is as follows:
 
-![eu(t)=K_{p}\;e(t)+K_{i}\;\int_{0}^{t}e(t^{\prime})\;dt^{\prime}+K_{d}\;\frac{d}{dt}(e(t)))](https://latex.codecogs.com/svg.latex?eu(t)=K_{p}\;e(t)+K_{i}\;\int_{0}^{t}e(t^{\prime})\;dt^{\prime}+K_{d}\;\frac{d}{dt}(e(t)))) 
+![u(t)=K_{p}e(t)+K_{i}\int_{0}^{t}e(t^{\prime})dt^{\prime}+K_{d}\frac{d}{dt}(e(t)))](https://latex.codecogs.com/svg.latex?u(t)=K_{p}e(t)+K_{i}\int_{0}^{t}e(t^{\prime})dt^{\prime}+K_{d}\frac{d}{dt}(e(t)))) 
 
 
 
