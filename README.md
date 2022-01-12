@@ -22,7 +22,8 @@ Here, ![](https://latex.codecogs.com/svg.latex?K_p), ![](https://latex.codecogs.
 In the context of our car, the desired distance to the wall should be our set point for our controller, which means our error is the difference between the desired and actual distance to the wall. This raises an important question: how do we measure the distance to the wall, and at what point in time? One option would simply be to consider the distance to the right wall at the current time ![](https://latex.codecogs.com/svg.latex?t) (let's call it ![](https://latex.codecogs.com/svg.latex?D_t)). Let's consider a generic orientation of the car with respect to the right wall and suppose the angle between the car's ![](https://latex.codecogs.com/svg.latex?x)-axis and the wall is denoted by ![](https://latex.codecogs.com/svg.latex?\alpha). We will obtain two laser scans (distances) to the wall: one at an angle ![](https://latex.codecogs.com/svg.latex?\theta) ( ![](https://latex.codecogs.com/svg.latex?0<\theta\leq70) degrees), and another at an angle of 0 degrees relative to the car's x-axis. Suppose these two laser scans return distances [](https://latex.codecogs.com/svg.latex?a) and ![](https://latex.codecogs.com/svg.latex?b), respectively.
 
 ![fig1](imgs/wall_following_lab_figure_1.png)
-Figure 1: Distance and orientation of the car relative to the wall
+
+*Figure 1: Distance and orientation of the car relative to the wall*
 
 Using the two distances ![](https://latex.codecogs.com/svg.latex?a) and ![](https://latex.codecogs.com/svg.latex?b) from the laser scan, the angle ![](https://latex.codecogs.com/svg.latex?\theta) between the laser scans, and some trigonometry, we can express ![](https://latex.codecogs.com/svg.latex?\alpha) as
 
@@ -39,7 +40,8 @@ However, we have a problem on our hands. Remember that this is a race: your car 
 ![](https://latex.codecogs.com/svg.latex?D_{t+1}=D_t+L\mbox{sin}(\alpha))
 
 ![fig1](imgs/wall_following_lab_figure_2.png)
-Figure 2: Finding the future distance from the car to the wall
+
+*Figure 2: Finding the future distance from the car to the wall*
 
 We're almost there. Our control algorithm gives us a steering angle for the VESC, but we would also like to slow the car down around corners for safety. We can compute the speed in a step-like fashion based on the steering angle so that as the angle exceeds progressively larger amounts, the speed is cut in discrete increments. For this lab, we would like you to implement the following speed control algorithm:
 
