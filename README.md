@@ -13,7 +13,7 @@ A PID controller is a way to maintain certain parameters of a system around a sp
 
 The general equation for a PID controller in the time domain, as discussed in lecture, is as follows:
 
-[eq1](https://render.githubusercontent.com/render/math?math=eu(t)=K_{p}\;e(t)+K_{i}\;\int_{0}^{t}e(t^{\prime})\;dt^{\prime}+K_{d}\;\frac{d}{dt}(e(t)))
+[eu(t)=K_{p}\;e(t)+K_{i}\;\int_{0}^{t}e(t^{\prime})\;dt^{\prime}+K_{d}\;\frac{d}{dt}(e(t)))](https://render.githubusercontent.com/render/math?math=eu(t)=K_{p}\;e(t)+K_{i}\;\int_{0}^{t}e(t^{\prime})\;dt^{\prime}+K_{d}\;\frac{d}{dt}(e(t)))
 
 
 Here, $K_p$, $K_i$, and $K_d$ are constants that determine how much weight each of the three components (proportional, integral, derivative) contribute to the control output $u(t)$. $u(t)$ in our case is the steering angle we want the car to drive at. The error term $e(t)$ is the difference between the set point and the parameter we want to maintain around that set point.
