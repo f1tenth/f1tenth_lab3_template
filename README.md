@@ -51,10 +51,10 @@ We're almost there. Our control algorithm gives us a steering angle for the VESC
 
 So, in summary, here's what we need to do:
 
-1. Obtain two laser scans (distances) ![](https://render.githubusercontent.com/render/math?math=a) and ![](https://render.githubusercontent.com/render/math?math=b), with ![](https://render.githubusercontent.com/render/math?math=b) taken at 0 degrees and ![](https://render.githubusercontent.com/render/math?math=a) taken at an angle ![](https://render.githubusercontent.com/render/math?math=\theta) (![](https://render.githubusercontent.com/render/math?math=0<\theta\leq70))
-2. Use the distances ![](https://render.githubusercontent.com/render/math?math=a) and ![](https://render.githubusercontent.com/render/math?math=b) to calculate the angle ![](https://render.githubusercontent.com/render/math?math=\alpha) between the car's ![](https://render.githubusercontent.com/render/math?math=x)-axis and the right wall.
-3. Use ![](https://render.githubusercontent.com/render/math?math=\alpha) to find the current distance ![](https://render.githubusercontent.com/render/math?math=D_t) to the car, and then ![](https://render.githubusercontent.com/render/math?math=\alpha) and ![](https://render.githubusercontent.com/render/math?math=D_t) to find the estimated future distance ![](https://render.githubusercontent.com/render/math?math=D_{t+1}) to the wall.
-4. Run ![](https://render.githubusercontent.com/render/math?math=D_{t+1}) through the PID algorithm described above to get a steering angle.
+1. Obtain two laser scans (distances) ![](https://latex.codecogs.com/svg.latex?a) and ![](https://latex.codecogs.com/svg.latex?b), with ![](https://latex.codecogs.com/svg.latex?b) taken at 0 degrees and ![](https://latex.codecogs.com/svg.latex?a) taken at an angle ![](https://latex.codecogs.com/svg.latex?\theta) (![](https://latex.codecogs.com/svg.latex?0<\theta\leq70))
+2. Use the distances ![](https://latex.codecogs.com/svg.latex?a) and ![](https://latex.codecogs.com/svg.latex?b) to calculate the angle ![](https://latex.codecogs.com/svg.latex?\alpha) between the car's ![](https://latex.codecogs.com/svg.latex?x)-axis and the right wall.
+3. Use ![](https://latex.codecogs.com/svg.latex?\alpha) to find the current distance ![](https://latex.codecogs.com/svg.latex?D_t) to the car, and then ![](https://latex.codecogs.com/svg.latex?\alpha) and ![](https://latex.codecogs.com/svg.latex?D_t) to find the estimated future distance ![](https://latex.codecogs.com/svg.latex?D_{t+1}) to the wall.
+4. Run ![](https://latex.codecogs.com/svg.latex?D_{t+1}) through the PID algorithm described above to get a steering angle.
 5. Use the steering angle you computed in the previous step to compute a safe driving speed.
 6. Publish the steering angle and driving speed to the VESC.
 
