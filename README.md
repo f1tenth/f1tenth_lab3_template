@@ -36,9 +36,9 @@ We can then express ![](https://latex.codecogs.com/svg.latex?D_t) as
 
 to get the current distance between the car and the right wall. What's our error term ![](https://latex.codecogs.com/svg.latex?e(t)), then? It's simply the difference between the desired distance and actual distance! For example, if our desired distance is 1 meter from the wall, then ![](https://latex.codecogs.com/svg.latex?e(t)) becomes ![](https://latex.codecogs.com/svg.latex?1-D_t).
 	
-However, we have a problem on our hands. Remember that this is a race: your car will be traveling at a high speed and therefore will have a non-instantaneous response to whatever speed and servo control you give to it. If we simply use the current distance to the wall, we might end up turning too late, and the car may crash. Therefore, we must look to the future and project the car ahead by a certain lookahead distance (let's call it $L$). Our new distance $D_{t+1}$ will then be
+However, we have a problem on our hands. Remember that this is a race: your car will be traveling at a high speed and therefore will have a non-instantaneous response to whatever speed and servo control you give to it. If we simply use the current distance to the wall, we might end up turning too late, and the car may crash. Therefore, we must look to the future and project the car ahead by a certain lookahead distance (let's call it $L$). Our new distance ![](https://latex.codecogs.com/svg.latex?D_{t+1}) will then be
 
-D_{t+1} = D_t + L \; \mbox{sin}(\alpha)
+![](https://latex.codecogs.com/svg.latex?D_{t+1}=D_t+L\mbox{sin}(\alpha))
 
 ![fig1](imgs/wall_following_lab_figure_2.png)
 Figure 2: Finding the future distance from the car to the wall
@@ -51,10 +51,10 @@ We're almost there. Our control algorithm gives us a steering angle for the VESC
 
 So, in summary, here's what we need to do:
 
-1. Obtain two laser scans (distances) $a$ and $b$, with $b$ taken at 0 degrees and $a$ taken at an angle $\theta$ ($0 < \theta \leq 70$)
-2. Use the distances $a$ and $b$ to calculate the angle $\alpha$ between the car's $x$-axis and the right wall.
-3. Use $\alpha$ to find the current distance $D_t$ to the car, and then $\alpha$ and $D_t$ to find the estimated future distance $D_{t+1}$ to the wall.
-4. Run $D_{t+1}$ through the PID algorithm described above to get a steering angle.
+1. Obtain two laser scans (distances) ![](https://render.githubusercontent.com/render/math?math=a) and ![](https://render.githubusercontent.com/render/math?math=b), with ![](https://render.githubusercontent.com/render/math?math=b) taken at 0 degrees and ![](https://render.githubusercontent.com/render/math?math=a) taken at an angle ![](https://render.githubusercontent.com/render/math?math=\theta) (![](https://render.githubusercontent.com/render/math?math=0<\theta\leq70))
+2. Use the distances ![](https://render.githubusercontent.com/render/math?math=a) and ![](https://render.githubusercontent.com/render/math?math=b) to calculate the angle ![](https://render.githubusercontent.com/render/math?math=\alpha) between the car's ![](https://render.githubusercontent.com/render/math?math=x)-axis and the right wall.
+3. Use ![](https://render.githubusercontent.com/render/math?math=\alpha) to find the current distance ![](https://render.githubusercontent.com/render/math?math=D_t) to the car, and then ![](https://render.githubusercontent.com/render/math?math=\alpha) and ![](https://render.githubusercontent.com/render/math?math=D_t) to find the estimated future distance ![](https://render.githubusercontent.com/render/math?math=D_{t+1}) to the wall.
+4. Run ![](https://render.githubusercontent.com/render/math?math=D_{t+1}) through the PID algorithm described above to get a steering angle.
 5. Use the steering angle you computed in the previous step to compute a safe driving speed.
 6. Publish the steering angle and driving speed to the VESC.
 
