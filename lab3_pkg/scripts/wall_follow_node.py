@@ -3,16 +3,7 @@ from rclpy.node import Node
 
 import numpy as np
 from sensor_msgs.msg import LaserScan
-from ackermann_msgs.msg import AckermannDriveStamped, AckermannDrive
-
-#PID CONTROL PARAMS
-#TODO kp = 
-#TODO kd = 
-#TODO ki = 
-servo_offset = 0.0
-prev_error = 0.0 
-error = 0.0
-integral = 0.0
+from ackermann_msgs.msg import AckermannDriveStamped
 
 #WALL FOLLOW PARAMS
 ANGLE_RANGE = 270 # Hokuyo 10LX has 270 degrees scan
@@ -27,12 +18,21 @@ class WallFollow(Node):
     """
     def __init__(self):
         super().__init__('wall_follow_node')
-        # Topics & Subs, Pubs
+
         lidarscan_topic = '/scan'
         drive_topic = '/drive'
 
-        # TODO: Subscribe to LIDAR
-        # TODO: Publish to drive
+        # TODO: create subscribers and publishers
+
+        # TODO: set PID gains
+        # self.kp = 
+        # self.kd = 
+        # self.ki = 
+
+        # TODO: store history
+        # self.integral = 
+        # self.prev_error = 
+        # self.error = 
 
     def getRange(self, data, angle):
         # data: single message from topic /scan
@@ -43,16 +43,13 @@ class WallFollow(Node):
         return 0.0
 
     def pid_control(self, error, velocity):
-        global integral
-        global prev_error
-        global kp
-        global ki
-        global kd
+
         angle = 0.0
-        #TODO: Use kp, ki & kd to implement a PID controller for 
+        velocity = 0.0
+        #TODO: Use kp, ki & kd to implement a PID controller
         drive_msg = AckermannDriveStamped()
         drive_msg.header.stamp = self.get_clock().now().to_msg()
-        drive_msg.header.frame_id = "laser"
+        drive_msg.header.frame_id = "/base_link"
         drive_msg.drive.steering_angle = angle
         drive_msg.drive.speed = velocity
         self.drive_pub.publish(drive_msg)
