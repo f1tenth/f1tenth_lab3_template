@@ -5,13 +5,6 @@ import numpy as np
 from sensor_msgs.msg import LaserScan
 from ackermann_msgs.msg import AckermannDriveStamped
 
-#WALL FOLLOW PARAMS
-ANGLE_RANGE = 270 # Hokuyo 10LX has 270 degrees scan
-DESIRED_DISTANCE_RIGHT = 0.9 # meters
-DESIRED_DISTANCE_LEFT = 0.55
-VELOCITY = 2.00 # meters per second
-CAR_LENGTH = 0.50 # Traxxas Rally is 20 inches or 0.5 meters
-
 class WallFollow(Node):
     """ 
     Implement Wall Following on the car
@@ -34,16 +27,50 @@ class WallFollow(Node):
         # self.prev_error = 
         # self.error = 
 
-    def getRange(self, data, angle):
-        # data: single message from topic /scan
-        # angle: between -45 to 225 degrees, where 0 degrees is directly to the right
-        # Outputs length in meters to object with angle in lidar scan field of view
-        #make sure to take care of nans etc.
+        # TODO: store any necessary values you think you'll need
+
+    def get_range(self, range_data, angle):
+        """
+        Simple helper to return the corresponding range measurement at a given angle. Make sure you take care of NaNs and infs.
+
+        Args:
+            range_data: single range array from the LiDAR
+            angle: between angle_min and angle_max of the LiDAR
+
+        Returns:
+            range: range measurement in meters at the given angle
+
+        """
+
         #TODO: implement
         return 0.0
 
-    def pid_control(self, error, velocity):
+    def get_error(self, range_data, dist):
+        """
+        Calculates the error to the wall. Follow the wall to the left (going counter clockwise in the Levine loop). You potentially will need to use get_range()
 
+        Args:
+            range_data: single range array from the LiDAR
+            dist: desired distance to the wall
+
+        Returns:
+            error: calculated error
+        """
+
+        #TODO:implement
+        return 0.0
+
+    def pid_control(self, error, velocity):
+        """
+        Based on the calculated error, publish vehicle control
+
+        Args:
+            error: calculated error
+            velocity: desired velocity
+
+        Returns:
+            None
+        """
         angle = 0.0
         velocity = 0.0
         #TODO: Use kp, ki & kd to implement a PID controller
@@ -53,16 +80,20 @@ class WallFollow(Node):
         drive_msg.drive.steering_angle = angle
         drive_msg.drive.speed = velocity
         self.drive_pub.publish(drive_msg)
-    
-    def followLeft(self, data, leftDist):
-        #Follow left wall as per the algorithm 
-        #TODO:implement
-        return 0.0 
 
-    def lidar_callback(self, data):
-        error = 0.0 #TODO: replace with error returned by followLeft
-        #send error to pid_control
-        self.pid_control(error, VELOCITY)
+    def lidar_callback(self, msg):
+        """
+        Callback function for LaserScan messages. Calculate the error and publish the drive message in this function.
+
+        Args:
+            msg: Incoming LaserScan message
+
+        Returns:
+            None
+        """
+        error = 0.0 # TODO: replace with error calculated by get_error()
+        velocity = 0.0 # TODO: calculate desired car velocity based on error
+        self.pid_control(error, velocity) # TODO: actuate the car with PID
 
 
 def main(args=None):
