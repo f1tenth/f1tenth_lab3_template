@@ -72,16 +72,11 @@ class WallFollow(Node):
             None
         """
         angle = 0.0
-        velocity = 0.0
-        #TODO: Use kp, ki & kd to implement a PID controller
+        # TODO: Use kp, ki & kd to implement a PID controller
         drive_msg = AckermannDriveStamped()
-        drive_msg.header.stamp = self.get_clock().now().to_msg()
-        drive_msg.header.frame_id = "/base_link"
-        drive_msg.drive.steering_angle = angle
-        drive_msg.drive.speed = velocity
-        self.drive_pub.publish(drive_msg)
+        # TODO: fill in drive message and publish
 
-    def lidar_callback(self, msg):
+    def scan_callback(self, msg):
         """
         Callback function for LaserScan messages. Calculate the error and publish the drive message in this function.
 

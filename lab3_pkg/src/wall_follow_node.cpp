@@ -3,63 +3,97 @@
 #include "sensor_msgs/msg/laser_scan.hpp"
 #include "nav_msgs/msg/odometry.hpp"
 #include "ackermann_msgs/msg/ackermann_drive_stamped.hpp"
-/// CHECK: include needed ROS msg type headers and libraries
 
 class WallFollow : public rclcpp::Node {
 
 public:
     WallFollow() : Node("wall_follow_node")
     {
-        /// TODO: create ROS subscribers and publishers
+        // TODO: create ROS subscribers and publishers
     }
 
 private:
     // PID CONTROL PARAMS
-    /// TODO: double kp = 
-    /// TODO: double kd = 
-    /// TODO: double ki = 
+    // TODO: double kp =
+    // TODO: double kd =
+    // TODO: double ki =
     double servo_offset = 0.0;
     double prev_error = 0.0;
     double error = 0.0;
     double integral = 0.0;
-    // WALL FOLLOW PARAMS
-    double ANGLE_RANGE = 270; // Hokuyo 10LX has 270 degrees scan
-    double DESIRED_DISTANCE_RIGHT = 0.9; // meters
-    double DESIRED_DISTANCE_LEFT = 0.55;
-    double VELOCITY = 2.00; // meters per second
-    double CAR_LENGTH = 0.50; // Traxxas Rally is 20 inches or 0.5 meters
+
     // Topics
     std::string lidarscan_topic = "/scan";
     std::string drive_topic = "/drive";
     /// TODO: create ROS subscribers and publishers
 
-    double getRange(float* data, double angle)
+    double get_range(float* range_data, double angle)
     {
-        // data: single message from topic /scan
-        // angle: between -45 to 225 degrees, where 0 degrees is directly to the right
-        // Outputs length in meters to object with angle in lidar scan field of view
-        // make sure to take care of nans etc.
-        /// TODO: implement
+        /*
+        Simple helper to return the corresponding range measurement at a given angle. Make sure you take care of NaNs and infs.
+
+        Args:
+            range_data: single range array from the LiDAR
+            angle: between angle_min and angle_max of the LiDAR
+
+        Returns:
+            range: range measurement in meters at the given angle
+        */
+
+        // TODO: implement
+        return 0.0;
+    }
+
+    double get_error(float* range_data, double dist)
+    {
+        /*
+        Calculates the error to the wall. Follow the wall to the left (going counter clockwise in the Levine loop). You potentially will need to use get_range()
+
+        Args:
+            range_data: single range array from the LiDAR
+            dist: desired distance to the wall
+
+        Returns:
+            error: calculated error
+        */
+
+        // TODO:implement
         return 0.0;
     }
 
     void pid_control(double error, double velocity)
     {
-        /// TODO: pid_control
-    }
+        /*
+        Based on the calculated error, publish vehicle control
 
-    double followLeft(float* data, double leftDist) 
-    {   
-        // Follow left wall as per the algorithm 
-        /// TODO:implement
-        return 0.0;
+        Args:
+            error: calculated error
+            velocity: desired velocity
+
+        Returns:
+            None
+        */
+        double angle = 0.0;
+        // TODO: Use kp, ki & kd to implement a PID controller
+        auto drive_msg = ackermann_msgs::msg::AckermannDriveStamped();
+        // TODO: fill in drive message and publish
     }
 
     void scan_callback(const sensor_msgs::msg::LaserScan::ConstSharedPtr scan_msg) 
     {
-        /// TODO: calculate TTC
+        /*
+        Callback function for LaserScan messages. Calculate the error and publish the drive message in this function.
 
-        /// TODO: publish drive/brake message
+        Args:
+            msg: Incoming LaserScan message
+
+        Returns:
+            None
+        */
+        double error = 0.0; // TODO: replace with error calculated by get_error()
+        double velocity = 0.0; // TODO: calculate desired car velocity based on error
+        // TODO: actuate the car with PID
+
     }
 
 };
