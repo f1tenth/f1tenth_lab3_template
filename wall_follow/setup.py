@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'lab3_pkg'
+package_name = 'wall_follow'
 
 setup(
     name=package_name,
@@ -13,14 +13,14 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='zzangupenn',
-    maintainer_email='zzang@seas.upenn.edu',
-    description='f1tenth lab3_pkg',
-    license='TODO: License declaration',
+    maintainer='zzangupenn, Hongrui Zheng',
+    maintainer_email='zzang@seas.upenn.edu, billyzheng.bz@gmail.com',
+    description='f1tenth wall_follow lab',
+    license='MIT',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'wall_follow_node = lab3_pkg.wall_follow_node:main',
+            'wall_follow_node = wall_follow.wall_follow_node:main',
         ],
     },
 )

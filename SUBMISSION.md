@@ -1,4 +1,4 @@
-# Lab 1: Automatic Emergency Braking
+# Lab 3: Wall Following
 
-## Docker Hub ID
-(FILL ME IN)
+## YouTube video link
+[FILL ME IN](https://tinyurl.com/22mts2ax)

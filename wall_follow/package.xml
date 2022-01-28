@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>lab3_pkg</name>
+  <name>wall_follow</name>
   <version>0.0.0</version>
-  <description>f1tenth lab3_pkg</description>
+  <description>f1tenth wall_follow lab</description>
   <maintainer email="zzang@seas.upenn.edu">zzangupenn</maintainer>
-  <license>TODO: License declaration</license>
+  <maintainer email="billyzheng.bz@gmail.com">Hongrui Zheng</maintainer>
+  <license>MIT</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
   <buildtool_depend>ament_cmake_python</buildtool_depend>
