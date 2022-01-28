@@ -55,7 +55,7 @@ So, in summary, here's what we need to do:
 3. Use ![](https://latex.codecogs.com/svg.latex?\alpha) to find the current distance ![](https://latex.codecogs.com/svg.latex?D_t) to the car, and then ![](https://latex.codecogs.com/svg.latex?\alpha) and ![](https://latex.codecogs.com/svg.latex?D_t) to find the estimated future distance ![](https://latex.codecogs.com/svg.latex?D_{t+1}) to the wall.
 4. Run ![](https://latex.codecogs.com/svg.latex?D_{t+1}) through the PID algorithm described above to get a steering angle.
 5. Use the steering angle you computed in the previous step to compute a safe driving speed.
-6. Publish the steering angle and driving speed.
+6. Publish the steering angle and driving speed to the `/drive` topic in simulation.
 
 ## IV. Implementation
 
